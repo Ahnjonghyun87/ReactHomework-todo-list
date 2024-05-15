@@ -5,12 +5,8 @@
   border-radius: 2px;
   background-color: antiquewhite;
   font-size: 19px;
-  align-items: center
-  
-
+  align-items: center;
 }
-
-
 
 .form-container {
   padding-top: 50px;
@@ -53,4 +49,20 @@
 
 .complete-container {
   font-size: 30px;
+}
+
+.todos {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.todoCard {
+  height: 200px;
+  width: 200px;
+  border-radius: 2px;
+  background-color: cornflowerblue;
+}
+
+.todoCard div {
+  word-break: break-all;
 }

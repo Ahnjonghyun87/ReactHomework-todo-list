@@ -1,3 +1,9 @@
+.App {
+  max-width: 1200px;
+  margin: 0 auto;
+  min-width: 800px;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -54,6 +60,7 @@
 .todos {
   display: flex;
   flex-wrap: wrap;
+  gap: 8px;
 }
 
 .todoCard {

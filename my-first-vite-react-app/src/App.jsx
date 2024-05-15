@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import Todo from "./Todo";
 
 const App = () => {
   const [title, setTitle] = useState("");
@@ -25,6 +26,23 @@ const App = () => {
 
   const onChangeDescription = (event) => {
     setDescription(event.target.value);
+  };
+
+  const onDeleteTodo = (deleteId) => {
+    setTodos((todos) => {
+      return todos.filter(({ id }) => deleteId !== id);
+    });
+  };
+
+  const onChangeTodoState = (targetId) => {
+    setTodos((todos) => {
+      return todos.map((todo) => {
+        if (todo.id === targetId) {
+          return { ...todo, isDone: !todo.isDone };
+        }
+        return todo;
+      });
+    });
   };
 
   return (
@@ -54,19 +72,39 @@ const App = () => {
         <div>working..🔥</div>
         <ul className="todos">
           {todos.map(({ title, description, id, isDone }) => {
+            if (isDone) return;
+
             return (
-              <li className="todoCard" key={id}>
-                <div>{title}</div>
-                <div>{description}</div>
-                <button>삭제</button>
-                <button>완료</button>
-              </li>
+              <Todo
+                key={id}
+                id={id}
+                title={title}
+                description={description}
+                onDeleteTodo={onDeleteTodo}
+                onChangeTodoState={onChangeTodoState}
+              />
             );
           })}
         </ul>
       </div>
       <div className="complete-container">
         <div>done..!🏆</div>
+        <ul className="todos">
+          {todos.map(({ title, description, id, isDone }) => {
+            if (!isDone) return;
+
+            return (
+              <Todo
+                key={id}
+                id={id}
+                title={title}
+                description={description}
+                onDeleteTodo={onDeleteTodo}
+                onChangeTodoState={onChangeTodoState}
+              />
+            );
+          })}
+        </ul>
       </div>
     </div>
   );

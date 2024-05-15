@@ -20,13 +20,13 @@
   background-color: beige;
   border-radius: 5px;
   display: flex;
-  flex-direction: row; /* 가로 방향 배치 */
-  align-items: center; /* 세로 중심 정렬 */
+  flex-direction: row;
+  align-items: center;
   margin-top: 20px;
 }
 
 .form-container input[type="text"] {
-  margin-right: 10px; /* 제목과 내용 사이 간격 */
+  margin-right: 10px;
   padding: 10px;
   background-color: rgb(252, 253, 255);
   border-radius: 3px;
@@ -35,12 +35,12 @@
 }
 
 .form-container input[type="text"]:first-child {
-  margin-left: 50px; /* 첫 번째 입력 필드 왼쪽 여백 */
+  margin-left: 50px;
 }
 
 .form-container button {
-  margin-left: auto; /* 버튼을 오른쪽으로 밀어내기 */
-  margin-right: 10px; /* 버튼 오른쪽 여백 */
+  margin-left: auto;
+  margin-right: 10px;
   padding: 10px;
   background-color: coral;
   border-radius: 3px;
@@ -61,15 +61,34 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  padding-top: 30px;
 }
 
 .todoCard {
-  height: 200px;
+  min-height: 200px; /* 최소 높이를 200px로 설정 */
   width: 200px;
-  border-radius: 2px;
-  background-color: cornflowerblue;
+  border-radius: 5px;
+  background-color: rgb(191, 212, 250);
+  overflow: auto; /* 내용이 넘칠 경우 스크롤바 생성 */
 }
 
 .todoCard div {
+  margin-left: 10px;
   word-break: break-all;
+  margin-top: 15px;
+}
+
+.todos button {
+  margin-top: auto;
+  margin-left: 10px;
+
+  padding: 10px;
+  background-color: coral;
+  border-radius: 3px;
+  color: white;
+  border: 2px solid white;
+}
+
+.todos button + button {
+  margin-left: 80px;
 }

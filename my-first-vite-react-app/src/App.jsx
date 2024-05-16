@@ -8,6 +8,14 @@ const App = () => {
   const [todos, setTodos] = useState([]);
 
   const onClick = () => {
+    // 유효성 검사 추가
+    // 입력값이 없을 경우 alert를 통해 경고 메시지를 보여주고 함수를 종료
+
+    if (!title.trim() || !description.trim()) {
+      alert("내용을 입력해주세요");
+      return;
+    }
+
     const newValue = {
       title: title,
       description: description,

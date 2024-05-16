@@ -72,7 +72,7 @@ const App = () => {
         <div>working..🔥</div>
         <ul className="todos">
           {todos.map(({ title, description, id, isDone }) => {
-            if (isDone) return;
+            if (isDone) return null;
 
             return (
               <Todo
@@ -80,6 +80,7 @@ const App = () => {
                 id={id}
                 title={title}
                 description={description}
+                isDone={isDone}
                 onDeleteTodo={onDeleteTodo}
                 onChangeTodoState={onChangeTodoState}
               />
@@ -91,7 +92,7 @@ const App = () => {
         <div>done..!🏆</div>
         <ul className="todos">
           {todos.map(({ title, description, id, isDone }) => {
-            if (!isDone) return;
+            if (!isDone) return null;
 
             return (
               <Todo
@@ -99,6 +100,7 @@ const App = () => {
                 id={id}
                 title={title}
                 description={description}
+                isDone={isDone}
                 onDeleteTodo={onDeleteTodo}
                 onChangeTodoState={onChangeTodoState}
               />
@@ -109,4 +111,5 @@ const App = () => {
     </div>
   );
 };
+
 export default App;

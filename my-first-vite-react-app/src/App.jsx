@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
-import Todo from "./Todo";
+import CompleteContainer from "./CompleteContainer";
+import ProgressContainer from "./ProgressContainer";
 
 const App = () => {
   const [title, setTitle] = useState("");
@@ -8,9 +9,6 @@ const App = () => {
   const [todos, setTodos] = useState([]);
 
   const onClick = () => {
-    // 유효성 검사 추가
-    // 입력값이 없을 경우 alert를 통해 경고 메시지를 보여주고 함수를 종료
-
     if (!title.trim() || !description.trim()) {
       alert("내용을 입력해주세요");
       return;
@@ -26,6 +24,8 @@ const App = () => {
     setTodos((prev) => {
       return [...prev, newValue];
     });
+    setTitle("");
+    setDescription("");
   };
 
   const onChangeTitle = (event) => {
@@ -76,46 +76,17 @@ const App = () => {
 
         <button onClick={onClick}>추가하기</button>
       </div>
-      <div className="progress-container">
-        <div>working..🔥</div>
-        <ul className="todos">
-          {todos.map(({ title, description, id, isDone }) => {
-            if (isDone) return null;
 
-            return (
-              <Todo
-                key={id}
-                id={id}
-                title={title}
-                description={description}
-                isDone={isDone}
-                onDeleteTodo={onDeleteTodo}
-                onChangeTodoState={onChangeTodoState}
-              />
-            );
-          })}
-        </ul>
-      </div>
-      <div className="complete-container">
-        <div>done..!🏆</div>
-        <ul className="todos">
-          {todos.map(({ title, description, id, isDone }) => {
-            if (!isDone) return null;
-
-            return (
-              <Todo
-                key={id}
-                id={id}
-                title={title}
-                description={description}
-                isDone={isDone}
-                onDeleteTodo={onDeleteTodo}
-                onChangeTodoState={onChangeTodoState}
-              />
-            );
-          })}
-        </ul>
-      </div>
+      <ProgressContainer
+        todos={todos}
+        onDeleteTodo={onDeleteTodo}
+        onChangeTodoState={onChangeTodoState}
+      />
+      <CompleteContainer
+        todos={todos}
+        onDeleteTodo={onDeleteTodo}
+        onChangeTodoState={onChangeTodoState}
+      />
     </div>
   );
 };
